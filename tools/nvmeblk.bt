@@ -55,6 +55,11 @@ BEGIN
 	printf("%-9s %-10s %-8s %-6s %-16s %-16s\n", "DISK", "LBA", "LEN", "OP", "COMM", "ALIGN");
 }
 
+kretfunc:nvme_core:nvme_setup_cmd
+{
+	/* we add an empty kretfuncs probe to load module BTF */
+}
+
 kprobe:nvme_setup_cmd
 {
 	$req = (struct request *)arg1;
